@@ -117,23 +117,23 @@
 												<div class="hidden" id="details_yesMore">
 												 <fieldset>
 													 <label for='citation2'>Full citation for item 2:</label>
-													 <input type='text' name='citation2' size='150'><br />
+													 <input type='text' name='citation2' size='150' /><br />
 													 <label for='citation3'>Full citation for item 3:</label>
-													 <input type='text' name='citation3' size='150'><br />
+													 <input type='text' name='citation3' size='150' /><br />
 													 <label for='citation4'>Full citation for item 4:</label>
-													 <input type='text' name='citation4' size='150'><br />
+													 <input type='text' name='citation4' size='150' /><br />
 													 <label for='citation5'>Full citation for item 5:</label>
-													 <input type='text' name='citation5' size='150'><br />
+													 <input type='text' name='citation5' size='150' /><br />
 													 <label for='citation6'>Full citation for item 6:</label>
-													 <input type='text' name='citation6' size='150'><br />
+													 <input type='text' name='citation6' size='150' /><br />
 													 <label for='citation7'>Full citation for item 7:</label>
-													 <input type='text' name='citation7' size='150'><br />
+													 <input type='text' name='citation7' size='150' /><br />
 													 <label for='citation8'>Full citation for item 8:</label>
-													 <input type='text' name='citation8' size='150'><br />
+													 <input type='text' name='citation8' size='150' /><br />
 													 <label for='citation9'>Full citation for item 9:</label>
-													 <input type='text' name='citation9' size='150'><br />
+													 <input type='text' name='citation9' size='150' /><br />
 													 <label for='citation10'>Full citation for item 10:</label>
-													 <input type='text' name='citation10' size='150'><br />
+													 <input type='text' name='citation10' size='150' /><br />
 													</fieldset>
 												</div>
 												
@@ -146,11 +146,11 @@
 							
 							<h3>Instructor Information</h3>
 								<label for='phone'>Instructor's Phone*</label>
-								<input type='text' name='phone' size='32'><br />
+								<input type='text' name='phone' size='32'/><br />
 								<label for='instructName'>Instructor's Name*</label>
-								<input type='text' name='instructorName' size='32'>	<br />			
+								<input type='text' name='instructorName' size='32'/>	<br />			
 								<label for='instructEmail'>Instructor's Email (if you are submitting on behalf of an instructor)</label>
-								<input type='text' name='instructEmail' size='32'><br />
+								<input type='text' name='instructEmail' size='32'/><br />
 								<label for="instructorDepartment">Instructor's Department (if you are submitting on behalf of an instructor)</label>
 								<input type="text" name="instructorDepartment" size="32" /><br />
 						</fieldset>
@@ -176,20 +176,21 @@
 								
 										<h2>Purchase Request - Book</h2>
 										
-											<label for='author'>Author(s)/Editor(s) *</label>
-											<input type='text' name='author' size='32'>	<br />			
-											<label for='title'>Title *</label>
-											<input type='text' name='title' size='32'><br />
-											<label for='publisher'>Publisher</label>
-											<input type='text' name='publisher'size='32'><br />
-											<label for='year'>Year of Publication</label>
-											<input type='text' name='year' size='32'><br />
-											<label for='edition'>Edition</label>
-											<input type='text' name='edition' size='32'>
-											<label for='ISBN_ISSN'>ISBN</label>
-											<input type='text' name='ISBN_ISSN' size='32'><br />  
-											<label for='price'>Price</label>
-											<input type='text' name='price' size='32'><br />
+											
+											<label for='bookAuthor'>Author(s)/Editor(s) *</label>
+											<input type='text' name='bookAuthor' size='32'/><br />			
+											<label for='bookTitle'>Title *</label>
+											<input type='text' name='bookTitle' size='32'/><br />
+											<label for='bookPublisher'>Publisher</label>
+											<input type='text' name='bookPublisher' size='32'/><br />
+											<label for='bookYear'>Year of Publication</label>
+											<input type='text' name='bookYear' size='32'/><br />
+											<label for='bookEdition'>Edition</label>
+											<input type='text' name='bookEdition' size='32'/>
+											<label for='ISBN'>ISBN</label>
+											<input type='text' name='ISBN' size='32'/><br />  
+											<label for='bookPrice'>Price</label>
+											<input type='text' name='bookPrice' size='32'/><br />
 											
 										</fieldset>
 								</div><!--close div hidden book-->
@@ -199,17 +200,17 @@
 								<fieldset>
 								
 										<h2>Purchase Request - Periodical Subscription</h2>
-    	
-										<label for='title'>Title *</label>
-										<input type='text' name='title' size='32'><br />
-										<label for='publisher'>Publisher</label>
-										<input type='text' name='publisher'  size='32'><br />
-										<label for='frequency'>Frequency of Publication</label>
-										<input type='text' name='frequency' size='32'><br />
-										<label for='ISBN_ISSN'>ISSN</label>
-										<input type='text' name='ISBN_ISSN' size='32'><br />  
-										<label for='price'>Price</label>
-										<input type='text' name='price' size='32'><br />
+										
+										<label for='perTitle'>Title *</label>
+										<input type='text' name='perTitle' size='32'/><br />
+										<label for='perPublisher'>Publisher</label>
+										<input type='text' name='perPublisher'  size='32'/><br />
+										<label for='perFrequency'>Frequency of Publication</label>
+										<input type='text' name='perFrequency' size='32'/><br />
+										<label for='per_ISSN'>ISSN</label>
+										<input type='text' name='per_ISSN' size='32'/><br />  
+										<label for='perPrice'>Price</label>
+										<input type='text' name='perPrice' size='32'/><br />
 										
 									</fieldset>
 								</div><!--close div hidden periodical-->
@@ -222,16 +223,15 @@
 										<h2>Purchase Request - Electronic Resource</h2>
     	
 		
-											<label for='title'>Resource Title *</label>
-											<input type='text' name='title'  size='32'><br />
+
 											<label for='publisher'>Publisher</label>
-											<input type='text' name='publisher'  size='32'><br />
+											<input type='text' name='publisher'  size='32'/><br />
 											<label for='frequency'>Frequency of Publication</label>
-											<input type='text' name='frequency'  size='32'><br />
+											<input type='text' name='frequency'  size='32'/><br />
 											<label for='ISBN_ISSN'>ISSN</label>
-											<input type='text' name='ISBN_ISSN'  size='32'><br />  
+											<input type='text' name='ISBN_ISSN'  size='32'/><br />  
 											<label for='price'>Price</label>
-											<input type='text' name='price'  size='32'><br />
+											<input type='text' name='price'  size='32'/><br />
 										</fieldset>
 								</div><!--close div hidden electronic-->
 
@@ -248,14 +248,13 @@
 													 <option value='16MM'>16MM</option>
 													 <option value='other'>other</option>
 											 </select>
-											<label for='title'>Title *</label>
-											<input type='text' name='title'  size='32'><br />
+
 											<label for='director'>Director</label>
-											<input type='text' name='frequency'  size='32'><br />
+											<input type='text' name='frequency'  size='32'/><br />
 											<label for='publisher'>Publisher</label>
-											<input type='text' name='publisher' size='32'><br />
+											<input type='text' name='publisher' size='32'/><br />
 											<label for='year'>Year</label>
-											<input type='text' name='year' size='32'><br />
+											<input type='text' name='year' size='32'/><br />
 										</fieldset>
 								</div><!--close div hidden video-->
 		            <label for='curriculum'>How does the item support teaching, study, or research at Pratt?</label>
