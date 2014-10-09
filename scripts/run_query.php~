@@ -1,15 +1,52 @@
 <?php
-  require '../../../../app_config.php';
+  require './conn.php';
   
-  mysql_connect(DATABASE_HOST, DATABASE_USERNAME, DATABASE_PASSWORD)
-    or die("<p>Error connecting to database: " .
-    			mysql_error() . "</p>");
-    
-  echo "<p>Connected to MySQL!</p>";
+  $query_text = $_REQUEST['query'];
+  $result = mysql_query($query_text);
   
-  mysql_select_db(DATABASE_NAME)
-  	or die("<p>Error selecting the database " . DATABASE_NAME .
+  
+  if (!$result){
+  	die("<p>Error in executing SQL query " . $query_text . ": " .
   		mysql_error() . "</p>");
-  	
-  	echo "<p>Connected to MySQL, using database " . DATABASE_NAME . "</p>";
+  }
+  
+  echo "<p>Results from your query:</p>";
+  echo "<ul>";
+  while ($row = mysql_fetch_row($result)) {
+  	echo "<li>{$row[0]}</li>";
+  }
+  echo "</ul>";
+  
+  $return_rows = false;
+  $uppercase_query_text = trim(strtoupper($query_text));
+  $location = strpos($uppercase_query_text, "CREATE");
+  if ($location === false) {
+  	$location = strpos($uppercase_query_text, "INSERT");
+  	if ($location === false) {
+  		$location = strpos($uppercase_query_text, "UPDATE");
+  		if ($location === false) {
+  			$location = strpos($uppercase_query_text, "DELETE");
+  			if ($location === false) {
+  				$location = strpos($uppercase_query_text, "DROP");
+  				if ($location === false) {
+  					$return_rows = true;
+  			  }
+  			}
+  		}
+  	}
+  }
+  
+  if ($return_rows) {
+  	echo "<p>Results from your query:</p>";
+  	echo "<ul>";
+  	while ($row = mysql_fetch_row($result)) {
+  		echo "<li>{$row[0]}</li>";
+  	}
+  	echo "</ul>";
+  } else {
+  	if ($result) {
+  		echo "<p>Your query was processed successfully.</p>";
+  		echo "<p>{$query_text}</p>";
+  	}
+  }
 ?>

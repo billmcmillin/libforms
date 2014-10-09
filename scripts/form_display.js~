@@ -1,0 +1,36 @@
+function showDiv()
+{
+  // hide any showing
+  $(".hidden").each(function(){
+      $(this).css('display','none');
+  });
+
+  // our target
+  var target = "#details_" + $("#reserve").val();                                                                                                                                
+  var target2 = "#details_" + $("#type").val();
+  // does it exist?
+  
+  if( $(target).length > 0 )
+  {
+    // show it
+    $(target).css('display','block');
+    $(target2).css('display','block');
+    
+  }
+}
+
+$(document).ready(function(){
+
+  // bind it
+  $("#reserve").change(function(){
+    showDiv();
+  });
+  
+  $("#type").change(function(){
+    showDiv();
+  });
+
+  // run it automagically
+  showDiv();
+});
+
