@@ -10,11 +10,11 @@
 
 
 <title>Material Purchase Suggestion Form</title>
-<!-- 
-<link rel="stylesheet" type="text/css" media="all" href="http://library.pratt.edu/includes/css/PrattCSS/screen.css" />
-<link rel="stylesheet" type="text/css" media="all" href="http://library.pratt.edu/includes/css/PrattCSS/library_style.css" />
 
-<link rel="stylesheet" type="text/css" media="all" href="validation.css" /> -->
+<link rel="stylesheet" type="text/css" media="all" href="CSS/formScreen.css" />
+<link rel="stylesheet" type="text/css" media="all" href="CSS/form_library_style.css" />
+
+<link rel="stylesheet" type="text/css" media="all" href="phpMM.css" /> 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/form_display.js"></script>
 
@@ -27,16 +27,62 @@
 </style>
 </head>
 
+
 <body>
 
-  <div id="content">
+     <div id="thinMarquee"><h1 class="thin1"><a href="http://library.pratt.edu/">Pratt Institute Libraries</a></h1></div>	
+	
+	<div class="headerBar">
+		<div class="headerNav">
+			<ul class="tabs">
+				<li><a href="/about" title="">About</a></li>
+				<li><a class="active" href="/services" title="">Services</a></li>
+				<li><a href="/find_resources" title="">Find Resources</a></li>
+
+				<li><a href="/research_assistance" title="">Research Assistance</a></li>
+			</ul>
+		</div><!-- close HeaderNav DIV -->
+        
+		<div class="searchBar">
+			<a href="/research_assistance/ask-a-librarian/">Ask Us</a>
+			<a class="last" href="http://cat.pratt.edu/" title="">PrattCat</a>
+
+			
+			<form method="post" action="http://library.pratt.edu/"  >
+                <div class='hiddenFields'>
+                    <input type="hidden" name="ACT" value="19" />
+                    <input type="hidden" name="XID" value="110b7a7f7f43a27ee4444450d9ff845a25c6a058" />
+                    <input type="hidden" name="RP" value="search&amp;#47;index" />
+                    <input type="hidden" name="NRP" value="search&amp;#47;noresults" />
+                    <input type="hidden" name="RES" value="20" />
+                    <input type="hidden" name="status" value="" />
+                    <input type="hidden" name="weblog" value="" />
+                    <input type="hidden" name="search_in" value="entries" />
+                    <input type="hidden" name="where" value="exact" />
+                    <input type="hidden" name="site_id" value="1" />
+                </div>
+
+
+			<p><input type="text" name="keywords" class="text" value="" maxlength="100" /></p>
+
+			<p><input type="submit" name="search" class="search" value="Search Site" /></p>
+			<input type="hidden" name="show_future_entries" id="field_show_future_entries" value="yes">
+			</form>
+			
+		</div><!-- close searchBar DIV -->
+	</div><!-- close headerBar DIV -->
+    
+    
+    <div id="container" class="wrapper">
+
+  <div id="formContent">
 	<h1>Recommend a Library Purchase</h1>
 
     <p>The Pratt Institue Libraries welcomes suggestions for material purchases which support the teaching, study, and research at the Institute. Budgetary considerations and the Library Collection Development Policy are taken into account for each request. All suggestions will be reviewed by the appropriate <a href="http://library.pratt.edu/research_assistance/department_liaisons/">subject librarian</a> and you will be notified of their decision.</p> 
 	<p>Before submitting a suggestion, please check the online library catalog, <a href="http://cat.pratt.edu/">PrattCat</a> to see if the material you need is already owned by Pratt Institute or on order. </p>
     
 
-
+<!-- BEGIN FORM -->
 
  <form name="validationcheck" action="material_request_result.php" method="POST">
    <h2>Contact Information</h2>
@@ -46,9 +92,9 @@
 				<label for="name">Your Name</label>
 				<input type="text" name="name" size="32" /><br />
 				<label for="email">E-Mail Address *</label>
-				<input type="text" name="email" size="50" /><br />
+				<input type="text" name="email" size="32" /><br />
 				<label for="prattID">Pratt ID Number</label>
-				<input type="text" name="prattID" size="50" /><br />
+				<input type="text" name="prattID" size="32" /><br />
 				<label for="people">Student, Faculty, Staff, or Other</label>
 				 <select name="people">
 						 <option value="faculty">Faculty</option>
@@ -92,14 +138,14 @@
 							 
 							<h3>Item Information</h3>
 							  <h4>Each reserve item request requires a <strong>full citation</strong> for copyright compliance. Lack of a full citation will slow down the processing of placing reserve items. Please provide the following information:</h4>
-								  <ul>
-								    <li><strong>For books:</strong> Book title, author/editor(s), publisher, edition, publication year, ISBN and call number and location if owned by Pratt.</li>
-                    <li><strong>For book chapters:</strong> Book title, book author/editor(s), chapter title, publisher, edition, publication year, ISBN, <strong>pages 
-                    of the chapter being placed and total number of pages</strong>.</li>
+								  
+								   <p><strong>For books:</strong> Book title, author/editor(s), publisher, edition, publication year, ISBN and call number and location if owned by Pratt.</p>
+                    <p><strong>For book chapters:</strong> Book title, book author/editor(s), chapter title, publisher, edition, publication year, ISBN, <strong>pages 
+                    of the chapter being placed and total number of pages</strong>.</p>
                                                     
-                    <li><strong>For articles:</strong>
-                    Journal name, full article title, author(s), volume, number, ISSN, publication date and pages</li>
-                   </ul>
+                    <p><strong>For articles:</strong>
+                    Journal name, full article title, author(s), volume, number, ISSN, publication date and pages</p>
+                 
                 
                    <label for='citation1'>Full citation for item 1:</label>
                    <input type="text" name="citation1" size="150" /><br /> 
@@ -148,7 +194,7 @@
 								<label for='phone'>Instructor's Phone*</label>
 								<input type='text' name='phone' size='32'/><br />
 								<label for='instructName'>Instructor's Name*</label>
-								<input type='text' name='instructorName' size='32'/>	<br />			
+								<input type='text' name='instructName' size='32'/>	<br />			
 								<label for='instructEmail'>Instructor's Email (if you are submitting on behalf of an instructor)</label>
 								<input type='text' name='instructEmail' size='32'/><br />
 								<label for="instructorDepartment">Instructor's Department (if you are submitting on behalf of an instructor)</label>
@@ -207,8 +253,8 @@
 										<input type='text' name='perPublisher'  size='32'/><br />
 										<label for='perFrequency'>Frequency of Publication</label>
 										<input type='text' name='perFrequency' size='32'/><br />
-										<label for='per_ISSN'>ISSN</label>
-										<input type='text' name='per_ISSN' size='32'/><br />  
+										<label for='perISSN'>ISSN</label>
+										<input type='text' name='perISSN' size='32'/><br />  
 										<label for='perPrice'>Price</label>
 										<input type='text' name='perPrice' size='32'/><br />
 										
@@ -223,15 +269,16 @@
 										<h2>Purchase Request - Electronic Resource</h2>
     	
 		
-
-											<label for='publisher'>Publisher</label>
-											<input type='text' name='publisher'  size='32'/><br />
-											<label for='frequency'>Frequency of Publication</label>
-											<input type='text' name='frequency'  size='32'/><br />
-											<label for='ISBN_ISSN'>ISSN</label>
-											<input type='text' name='ISBN_ISSN'  size='32'/><br />  
-											<label for='price'>Price</label>
-											<input type='text' name='price'  size='32'/><br />
+										  <label for='erTitle'>Title *</label>
+										  <input type='text' name='erTitle' size='32'/><br />
+											<label for='erPublisher'>Publisher</label>
+											<input type='text' name='erPublisher'  size='32'/><br />
+											<label for='erFrequency'>Frequency of Publication</label>
+											<input type='text' name='erFrequency'  size='32'/><br />
+											<label for='erISSN'>ISSN</label>
+											<input type='text' name='erISSN'  size='32'/><br />  
+											<label for='erPrice'>Price</label>
+											<input type='text' name='erPrice'  size='32'/><br />
 										</fieldset>
 								</div><!--close div hidden electronic-->
 
@@ -240,28 +287,28 @@
 								  <fieldset>
 								
 										<h2>Purchase Suggestions - Video</h2>
-											<label for='format'>Format *</label>
-											 <select name='format'>
+											<label for='videoFormat'>Format *</label>
+											 <select name='videoFormat'>
 											 		 <option value=''>Select</option>
 													 <option value='DVD'>DVD</option>
 													 <option value='VHS'>VHS</option>
 													 <option value='16MM'>16MM</option>
 													 <option value='other'>other</option>
 											 </select>
-
-											<label for='director'>Director</label>
-											<input type='text' name='frequency'  size='32'/><br />
-											<label for='publisher'>Publisher</label>
-											<input type='text' name='publisher' size='32'/><br />
-											<label for='year'>Year</label>
-											<input type='text' name='year' size='32'/><br />
+											 <label for='videoTitle'>Title *</label>
+											<input type='text' name='videoTitle'  size='32'/><br />
+											<label for='videoDirector'>Director</label>
+											<input type='text' name='videoDirector'  size='32'/><br />
+											<label for='videoPublisher'>Publisher</label>
+											<input type='text' name='videoPublisher' size='32'/><br />
+											<label for='videoYear'>Year</label>
+											<input type='text' name='videoYear' size='32'/><br />
 										</fieldset>
 								</div><!--close div hidden video-->
 		            <label for='curriculum'>How does the item support teaching, study, or research at Pratt?</label>
-								<input type='text' name='curriculum' size='200'><br />
+								<input type='text' name='curriculum' size='200'/><br />
 								<label for='notify'>Would you like to be notified when the item arrives?</label>
-								<select id="notify">
-								
+								<select name="notify">
 									<option value=''>Select</option>
 									<option value='yes'>Yes</option>
 									<option value='no'>No</option>
@@ -281,7 +328,7 @@
 								
 					
     </div><!--close content div-->
-
+    </div><!-- close container div-->
 </body>
 
 </html>

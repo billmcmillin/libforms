@@ -1,0 +1,95 @@
+
+
+div#formContent {
+  padding: 20px 5px 20px 40px;
+  margin: auto;
+  width: 600px;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+label {
+  display: block;
+  float: left;
+  clear: both;
+  width: 220px;
+  padding: 0 10px;
+  margin: 5px 0 0;
+  text-align: right;
+}
+
+
+
+fieldset {
+  border-color: #000;
+  border-width: 0px;
+  border-style: solid;
+  padding: 10px;
+  margin: 0;
+}
+
+fieldset br {
+  clear: left;
+}
+
+form input{
+  margin: 10px 0 5px 10px;
+  max-width: 300px;
+  float: left;
+}
+
+form input[name="curriculum"] {
+	  max-width: 300px;
+ 	  margin: 10px 0 5px 20px;
+
+}
+	
+form textarea {
+  margin: 5px 0 5px 5px;
+  max-width: 600px;
+  float: left;
+}
+
+form select {
+		max-width: 400px;
+	  float: left;
+	  margin: 10px 0 5px 10px;
+
+}
+
+form select[id="notify"] {
+	  float: left;
+	  margin: 10px 0 5px 20px;
+
+}
+
+fieldset input[type="submit"] {
+	  margin-top: 60px;
+}
+
+fieldset h3{
+	clear:both;
+}
+
+fieldset input[type="reset"] {
+	  margin-top: 60px;
+}
+
+fieldset input[name="citation1"], fieldset input[name="citation2"], fieldset input[name="citation3"], fieldset input[name="citation4"],
+fieldset input[name="citation5"], fieldset input[name="citation6"], fieldset input[name="citation7"], fieldset input[name="citation8"], 
+fieldset input[name="citation9"], fieldset input[name="citation10"]{
+	  max-width: 300px;
+}
+.center {
+  text-align: center;
+}
+
+
