@@ -39,7 +39,7 @@
 				<li><a class="active" href="/services" title="">Services</a></li>
 				<li><a href="/find_resources" title="">Find Resources</a></li>
 
-				<li><a href="/research_assistance" title="">Research Assistance</a></li>
+				<li><a href="/research_assistance" title="">Research Help</a></li>
 			</ul>
 		</div><!-- close HeaderNav DIV -->
         
@@ -78,7 +78,7 @@
   <div id="formContent">
 	<h1>Recommend a Library Purchase</h1>
 
-    <p>The Pratt Institue Libraries welcomes suggestions for material purchases which support the teaching, study, and research at the Institute. Budgetary considerations and the Library Collection Development Policy are taken into account for each request. All suggestions will be reviewed by the appropriate <a href="http://library.pratt.edu/research_assistance/department_liaisons/">subject librarian</a> and you will be notified of their decision.</p> 
+    <p>The Pratt Institute Libraries welcomes suggestions for material purchases which support the teaching, study, and research at the Institute. Budgetary considerations and the Library Collection Development Policy are taken into account for each request. All suggestions will be reviewed by the appropriate <a href="http://library.pratt.edu/research_assistance/department_liaisons/">subject librarian</a> and you will be notified of their decision.</p> 
 	<p>Before submitting a suggestion, please check the online library catalog, <a href="http://cat.pratt.edu/">PrattCat</a> to see if the material you need is already owned by Pratt Institute or on order. </p>
     
 
@@ -89,7 +89,7 @@
    <div id="patron">
       <fieldset>
 
-				<label for="name">Your Name</label>
+				<label for="name">Your Name *</label>
 				<input type="text" name="name" size="32" /><br />
 				<label for="email">E-Mail Address *</label>
 				<input type="text" name="email" size="32" /><br />
@@ -126,13 +126,13 @@
 							
 						  
 							<h3>Course Information</h3>
-								<label for="semester">Semester course taught</label>
+								<label for="semester">Semester course taught *</label>
 								<input type="text" name="semester" size="32" /><br />
-								<label for="cyear">Year course taught</label>
+								<label for="cyear">Year course taught *</label>
 								<input type="text" name="cyear" size="32" /><br />	
-								<label for="cnum">Course number</label>
+								<label for="cnum">Course number *</label>
 								<input type="text" name="cnum" size="32" /><br />
-								<label for="cname">Course name</label>
+								<label for="cname">Course name *</label>
 								<input type="text" name="cname" size="32" /><br />
 							 
 							 
@@ -147,7 +147,7 @@
                     Journal name, full article title, author(s), volume, number, ISSN, publication date and pages</p>
                  
                 
-                   <label for='citation1'>Full citation for item 1:</label>
+                   <label for='citation1'>Full citation for item 1: *</label>
                    <input type="text" name="citation1" size="150" /><br /> 
 										
 
@@ -189,16 +189,22 @@
 									<option value='BK'>Brooklyn</option>
 									<option value='MA'>Manhattan</option>
 								</select>	
+								<br />
+								<br />
 							
 							<h3>Instructor Information</h3>
 								<label for='phone'>Instructor's Phone*</label>
 								<input type='text' name='phone' size='32'/><br />
-								<label for='instructName'>Instructor's Name*</label>
+								<label for='instructName'>Instructor's Name</label>
 								<input type='text' name='instructName' size='32'/>	<br />			
 								<label for='instructEmail'>Instructor's Email (if you are submitting on behalf of an instructor)</label>
 								<input type='text' name='instructEmail' size='32'/><br />
 								<label for="instructorDepartment">Instructor's Department (if you are submitting on behalf of an instructor)</label>
 								<input type="text" name="instructorDepartment" size="32" /><br />
+								<label for="instructorStatement">I, (type in your name) certify that my reserve requests abide by <a href="http://www.ala.org/advocacy/copyright/fairuse/fairuseandelectronicreserves" >copyright and fair use guidelines</a>. *</label>
+								<input type="text" name="instructorStatement" size="32" /><br />
+								
+
 						</fieldset>
 				</div>
 
@@ -317,11 +323,12 @@
 
 				</div>
 			</div>
+			<div id="buttons">
       <fieldset class="center">
         <input type="submit" value="Submit Request" />
         <input type="reset" value="Clear and Restart" />
       </fieldset>
-      
+      </div>
     </form>
 
 

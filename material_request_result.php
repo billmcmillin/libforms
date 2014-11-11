@@ -11,7 +11,17 @@
 <title>Request Result Form</title>
 <link rel="stylesheet" type="text/css" media="all" href="/includes/css/PrattCSS/screen.css" /> 
 <link rel="stylesheet" type="text/css" media="all" href="/includes/css/PrattCSS/library_style.css" /> 
+<style>
+body{
+	background-color: #fff;
+}
+#content{ 
+	padding: 100px 0 0 0;
+	margin: auto;
+	float: none;
+}
 
+</style>
 </head>                                                     
 
 <body>
@@ -62,6 +72,8 @@
 			$instructName = isset($_POST['instructName']) ? strip_tags($_POST['instructName']) : '';
 			$instructEmail = isset($_POST['instructEmail']) ? strip_tags($_POST['instructEmail']) : '';
 			$instructorDepartment = isset($_POST['instructorDepartment']) ? strip_tags($_POST['instructorDepartment']) : '';
+			$instructorStatement = isset($_POST['instructorStatement']) ? strip_tags($_POST['instructorStatement']) : '';
+
 	    //end course reserve variables//
 	    
 	    
@@ -101,8 +113,13 @@
 	    //end electronic resources variables
 	    
 	    
+	    if($name == ""){
+					echo "<b><font color='red'>Please enter your name.</b></font><br/> Please click Back button on your browser to return to the previous page";
+					return;
+			}
+			
 	    
-	    
+	    //check for valid input and required fields/////
 	    $error = 1;
 			$email = validateEmail("email", strip_tags($_POST['email']), TRUE);
 			$error = declareError(TRUE);
@@ -115,6 +132,9 @@
 					echo "<b><font color='red'>Please select a material type.</b></font><br/> Please click Back button on your browser to return to the previous page";
 					return;
 			}
+			
+			
+			//end check for required fields///
 
 			//check to see if this is for course reserve
 			  //if not selected, give error
@@ -125,7 +145,35 @@
 						break;
 						
 					// yes, the item is for course reserve, submit the reserve info	
-			  	case "yesReserve":			
+			  	case "yesReserve":	
+			  		
+			  			if(($cnum == "") | ($semester == "") | ($cyear == "") | ($cname == "")){
+										echo "<b><font color='red'>Please enter complete course information.</b></font><br/> Please click Back button on your browser to return to the previous page";
+										return;
+								}
+								
+			  		
+							if($citation1 == ""){
+											echo "<b><font color='red'>Please enter a full citation for the item.</b></font><br/> Please click Back button on your browser to return to the previous page";
+											return;
+									}
+			  						if($location == ""){
+										echo "<b><font color='red'>Please enter a location.</b></font><br/> Please click Back button on your browser to return to the previous page";
+										return;
+								}
+								
+								if($phone == ""){
+										echo "<b><font color='red'>Please enter a phone number.</b></font><br/> Please click Back button on your browser to return to the previous page";
+										return;
+								}
+								
+							
+								if($instructorStatement == ""){
+										echo "<b><font color='red'>You must agree to the compliance statement by typing your name.</b></font><br/> Please click Back button on your browser to return to the previous page";
+										return;
+								}
+								
+								
 			  					//$libemail = 'selectors.library@pratt.edu';
 									$libemail = 'wmcmilli@pratt.edu';
 									//Create the email body.
@@ -146,6 +194,8 @@
 									$body .="<p><b>Instructor Name : </b>".$instructName."</p> \n";
 									$body .="<p><b>Instructor Email : </b>".$instructEmail."</p> \n";
 									$body .="<p><b>Instructor Department : </b>".$instructorDepartment."</p> \n";
+									$body .="<p><b>Compliance Statement Agreed to by: </b>".$instructorStatement."</p> \n";
+
 									$body .="<p><b>Citation 1 : </b>".$citation1."</p> \n";
 									$body .="<p><b>Citation 2  : </b>".$citation2."</p> \n";
 									$body .="<p><b>Citation 3  : </b>".$citation3."</p> \n";
@@ -158,7 +208,7 @@
 									$body .="<p><b>Citation 10  : </b>".$citation10."</p> \n";
 									
 									//form the db query
-									$query = sprintf("INSERT INTO purchase (timeStamp, name, email, phone, prattID, people, department, curriculum, notify, cyear, cnum, cname, location, instructName, instructEmail, instructorDepartment, citation1, citation2, citation3, citation4, citation5, citation6, citation7, citation8, citation9, citation10) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+									$query = sprintf("INSERT INTO purchase (timeStamp, name, email, phone, prattID, people, department, curriculum, notify, cyear, cnum, cname, location, instructName, instructEmail, instructorDepartment, instructorStatement, citation1, citation2, citation3, citation4, citation5, citation6, citation7, citation8, citation9, citation10) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
 									 mysqli_real_escape_string($dbLink, $timeStamp),																																																	 
 									 mysqli_real_escape_string($dbLink, $name),																																																	 
 									 mysqli_real_escape_string($dbLink, $email),																																																	 
@@ -175,6 +225,7 @@
 									 mysqli_real_escape_string($dbLink, $instructName),
 									 mysqli_real_escape_string($dbLink, $instructEmail),
 									 mysqli_real_escape_string($dbLink, $instructorDepartment),
+									 mysqli_real_escape_string($dbLink, $instructorStatement),
 									 mysqli_real_escape_string($dbLink, $citation1),
 									 mysqli_real_escape_string($dbLink, $citation2),
 									 mysqli_real_escape_string($dbLink, $citation3),
@@ -188,7 +239,7 @@
 									  );
 
 										
-									 echo "query = $query";	
+									 //echo "query = $query";	
 						
 						break;
 					//no, the item is not for course reserve, so do nothing	
@@ -204,6 +255,15 @@
 						//////////////////////BEGIN BOOK INFO//////////////////////////////			
 								case "book":			
 									
+								if($bookTitle == ""){
+										echo "<b><font color='red'>Please enter a book title.</b></font><br/> Please click Back button on your browser to return to the previous page";
+										return;
+								}
+								
+								if($bookAuthor == ""){
+										echo "<b><font color='red'>Please enter a book author.</b></font><br/> Please click Back button on your browser to return to the previous page";
+										return;
+								}
 									//$libemail = 'selectors.library@pratt.edu';
 									$libemail = 'wmcmilli@pratt.edu';
 									//Create the email body.
@@ -245,7 +305,7 @@
 									 mysqli_real_escape_string($dbLink, $notify)																																																																																														
 							 );
 															
-						echo "query = $query";	
+						//echo "query = $query";	
 						
 						break;
 				//////////////////////END BOOK INFO//////////////////////////////			
@@ -254,6 +314,11 @@
 				////////////////////BEGIN PERIODICAL INFO///////////////////////
 								case "periodical":
 									
+									
+									if($perTitle == ""){
+										echo "<b><font color='red'>Please enter a title.</b></font><br/> Please click Back button on your browser to return to the previous page";
+										return;
+								}
 									//$libemail = 'selectors.library@pratt.edu';
 									$libemail = 'wmcmilli@pratt.edu';
 									//Create the email body.
@@ -292,7 +357,7 @@
 									 mysqli_real_escape_string($dbLink, $notify)																																																																																														
 									 );
 																		
-							echo "query = $query";	
+							//echo "query = $query";	
 									
 									break;
 									
@@ -303,6 +368,10 @@
 									
 					    	case "electronic":
 					    		
+					    		if($erTitle == ""){
+										echo "<b><font color='red'>Please enter a title.</b></font><br/> Please click Back button on your browser to return to the previous page";
+										return;
+								}
 					    		
 									//$libemail = 'selectors.library@pratt.edu';
 									$libemail = 'wmcmilli@pratt.edu';
@@ -342,7 +411,7 @@
 									 mysqli_real_escape_string($dbLink, $notify)																																																																																														
 									 );
 			
-									echo "query = $query";	
+									//echo "query = $query";	
 						break;		
 			/////////////////////END EResource INFO////////////////////
 			
@@ -354,6 +423,15 @@
 			
 								case "video":
 									
+								if($videoTitle == ""){
+										echo "<b><font color='red'>Please enter a title.</b></font><br/> Please click Back button on your browser to return to the previous page";
+										return;
+								}
+								
+								if($videoFormat == ""){
+										echo "<b><font color='red'>Please enter a format.</b></font><br/> Please click Back button on your browser to return to the previous page";
+										return;
+								}
 									//$libemail = 'selectors.library@pratt.edu';
 									$libemail = 'wmcmilli@pratt.edu';
 									//Create the email body.
@@ -394,7 +472,7 @@
 									 mysqli_real_escape_string($dbLink, $notify)																																																																																														
 									 );
 			
-									echo "query = $query";		
+									//echo "query = $query";		
 									
 									break;	
 						
